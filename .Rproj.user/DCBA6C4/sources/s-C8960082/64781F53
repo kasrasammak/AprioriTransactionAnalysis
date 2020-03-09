@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583637008488.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "64781F53",
+    "lastKnownWriteTime" : 1583712986,
+    "last_content_update" : 1583712986420,
+    "path" : "~/Documents/Code/RStudio/RecommenderSystem/FilterByBrand.r",
+    "project_path" : "FilterByBrand.r",
+    "properties" : {
+        "cursorPosition" : "8,21",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

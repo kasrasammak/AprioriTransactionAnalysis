@@ -1,0 +1,89 @@
+# name of author , version of my code (1.0) , date , purpose/description of code
+
+#install relevant packages
+install.packages("RMySQL")
+install.packages("arules")
+install.packages("arulesViz")
+install.packages("caTools")
+
+#load libraries
+library(RMySQL)
+library(dplyr)
+library(arules)
+library(arulesViz)
+library(ggplot2)
+
+#connect to SQL database // create connection object
+mydb = dbConnect(MySQL(),user='root', password='', host='127.0.0.1', dbname='imarket_sql')
+
+#check the database tables and fields for reference
+dbListTables(mydb)
+dbListFields(mydb, 'orders')
+
+# query the respective tables and create their dataframes in R by fetching them
+rs = dbSendQuery(mydb, "select * from line_item")
+line_item = fetch(rs, n=-1)
+
+rs = dbSendQuery(mydb, "select * from orders")
+orders = fetch(rs, n=-1)
+
+rs = dbSendQuery(mydb, "select * from products")
+products = fetch(rs, n=-1)
+
+#join the tables and filter the values // data cleaning pre-processing
+itemOrders <- inner_join(x = line_item, y = orders, by = "id_order")
+itemOrders <- itemOrders %>% filter(state == "Completed")
+itemOrders <- inner_join(x = itemOrders, y = products, by = 'sku')
+
+#new data frame out of grouping
+groupByBrand <- itemOrders %>% 
+  group_by(brand) %>% 
+  summarize(count=n())
+filteredBrandGroups <- groupByBrand %>% filter(count >1000)
+filteredBrandGroups %>% ggplot(aes(brand, count)) + geom_col()
+itemOrdersFiltByBrand <- itemOrders %>%  
+  filter(brand %in% c("Apple", "Crucial", "Belkin", "iFixit", "LaCie", "NewerTech", "OWC", "Pack", "SanDisk", "Satechi", "Wacom", "Western Digital"))
+
+
+dfIdOrderAndSku <- itemOrders[c('id_order', 'sku', 'name_en')]
+dfIdOrderAndSkuBrandFilt <- itemOrdersFiltByBrand[c('id_order', 'sku', 'name_en')]
+
+    
+#write the dataframe to a csv file
+write.csv(dfIdOrderAndSku, "/Users/k-owl/Documents/code/DataScience/R/RecommenderSystem/idOrderAndSku.csv")
+write.csv(dfIdOrderAndSkuBrandFilt, "/Users/k-owl/Documents/code/DataScience/R/RecommenderSystem/idOrderAndSkuBrandFilt.csv")
+
+#create transactions file from csv file
+idOrderAndSku <- read.transactions("/Users/k-owl/Documents/code/DataScience/R/RecommenderSystem/idOrderAndSku.csv", 
+                  format = 'single', 
+                  sep = ',', 
+                  header = TRUE,
+                  cols= c('id_order', 'name_en'))
+
+idOrderAndSkuBrandFilt <- read.transactions("/Users/k-owl/Documents/code/DataScience/R/RecommenderSystem/idOrderAndSkuBrandFilt.csv", 
+                                   format = 'single', 
+                                   sep = ',', 
+                                   header = TRUE,
+                                   cols= c('id_order', 'name_en'))
+
+#for reference, check out the transaction files length, number of orders per transaction, etc
+inspect(idOrderAndSku)
+length(idOrderAndSku)
+size(idOrderAndSku)
+LIST(idOrderAndSku)
+labels <- itemLabels(idOrderAndSku)
+
+#plot the most frequent items, modulate support and top as you please
+itemFrequencyPlot(idOrderAndSku, top = 20, support = 0.005, cex.names = .7)
+
+#another plotting, don't know what it means yet
+image(sample(idOrderAndSku, 124)) 
+
+#create rules with the apriori function
+rules <- apriori (idOrderAndSku, parameter = list(supp = 0.0004, conf = .005, minlen = 2))
+rulesBrandFilt <- apriori (idOrderAndSkuBrandFilt, parameter = list(supp = 0.0004, conf = .005, minlen = 2))
+
+inspect(rules)
+inspect(rulesBrandFilt)
+
+plot(rules, method="grouped")

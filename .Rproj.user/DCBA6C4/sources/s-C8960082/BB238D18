@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583696030361.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BB238D18",
+    "lastKnownWriteTime" : 1583696133,
+    "last_content_update" : 1583696133240,
+    "path" : "~/Documents/Code/RStudio/RecommenderSystem/RulesMatrix.r",
+    "project_path" : "RulesMatrix.r",
+    "properties" : {
+        "cursorPosition" : "15,34",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

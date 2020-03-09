@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583696000734.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4033412270",
+    "id" : "E0F8E043",
+    "lastKnownWriteTime" : 1583718864,
+    "last_content_update" : 1583718864991,
+    "path" : "~/Documents/Code/RStudio/RecommenderSystem/sqlPreprocApriori.R",
+    "project_path" : "sqlPreprocApriori.R",
+    "properties" : {
+        "cursorPosition" : "66,33",
+        "scrollLine" : "38"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

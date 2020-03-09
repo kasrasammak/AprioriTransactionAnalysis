@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583492128488.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3254922946",
+    "id" : "581E42D2",
+    "lastKnownWriteTime" : 1583625546,
+    "last_content_update" : 1583625546752,
+    "path" : "~/Documents/code/DataScience/R/RecommenderSystem/DaniellesRulesMatrix.r",
+    "project_path" : "DaniellesRulesMatrix.r",
+    "properties" : {
+        "cursorPosition" : "12,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

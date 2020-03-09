@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583317683126.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3265508333",
+    "id" : "4D69FCC7",
+    "lastKnownWriteTime" : 1583495224,
+    "last_content_update" : 1583495224848,
+    "path" : "~/Documents/code/DataScience/R/RecommenderSystem/SQLstuff.R",
+    "project_path" : "SQLstuff.R",
+    "properties" : {
+        "cursorPosition" : "80,0",
+        "scrollLine" : "67"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
